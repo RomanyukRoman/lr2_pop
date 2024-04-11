@@ -42,11 +42,11 @@ public class Main {
             }
         }
     }
-    static int parallelMin() throws InterruptedException {
+    synchronized static int parallelMin() throws InterruptedException {
         StarterThread[] threads = new StarterThread[thread_num];
         int parts = dim / thread_num;
         for (int i = 0; i < thread_num; i++) {
-            int startIndex = (i * parts) + 1;
+            int startIndex = (i * parts);
             int finishIndex = parts * (i + 1);
             threads[i] = new StarterThread(startIndex, finishIndex);
             threads[i].start();
