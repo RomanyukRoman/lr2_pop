@@ -1,7 +1,7 @@
 with Ada.Text_IO; use Ada.Text_IO;
 
 procedure Main is
-   dim : constant Integer := 1000;
+   dim : constant Integer := 10000;
    thread_num : constant Integer := 5;
    arr : array(1..dim) of Integer;
 
@@ -74,9 +74,11 @@ procedure Main is
       end loop;
       part_manager.get_min(index);
       return index;
-      end parallel_min;
+   end parallel_min;
+   input : Integer := 0;
 begin
    Init_Arr;
-   Put_Line("Part_Min: " & Integer'Image(part_min(1, dim)) & " " & Integer'Image(arr(part_min(1, dim))));
-   Put_Line("Parallel_Min: " & parallel_min'Img & " " & arr(parallel_min)'Img);
+   input := parallel_min;
+   Put_Line("Part_Min: " & Integer'Image(part_min(1, dim)) & "; " & Integer'Image(arr(part_min(1, dim))));
+   Put_Line("Parallel_Min: " & input'Img & "; " & arr(input)'Img);
 end Main;
